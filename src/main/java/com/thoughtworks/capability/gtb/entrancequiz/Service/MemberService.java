@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 public class MemberService {
@@ -35,4 +36,20 @@ public class MemberService {
     }
 
 
+    public List<List<Member>> createGroups() {
+        groups.clear();
+        for (int i = 0;i<GROUP_NUM;i++) {
+            groups.add(new ArrayList<>());
+        }
+        List<Member> members = new ArrayList<>(memberList);
+        int groupIndex = 0;
+        while (members.size() > 0) {
+            groupIndex = groupIndex == GROUP_NUM ? 0 : groupIndex;
+            int index = (int)(Math.random()*(members.size()-1));
+            groups.get(groupIndex).add(members.get(index));
+            members.remove(index);
+            groupIndex++;
+        }
+        return groups;
+    }
 }

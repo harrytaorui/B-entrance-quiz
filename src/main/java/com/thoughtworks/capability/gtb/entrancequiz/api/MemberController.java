@@ -34,4 +34,11 @@ public class MemberController {
     public List<List<Member>> getGroups() {
         return memberService.getGroups();
     }
+
+    @PostMapping("/groups")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<List<Member>> createGroups() {
+        return memberService.createGroups();
+    }
+
 }
