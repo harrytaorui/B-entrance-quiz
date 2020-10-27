@@ -3,10 +3,7 @@ package com.thoughtworks.capability.gtb.entrancequiz.api;
 import com.thoughtworks.capability.gtb.entrancequiz.Service.MemberService;
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Member;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +25,13 @@ public class MemberController {
 
     @PostMapping("/members")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addMember(String name) {
-        memberService.addMember(name);
+    public void addMember(@RequestBody Member member) {
+        memberService.addMember(member.getName());
+    }
+
+    @GetMapping("/groups")
+    @ResponseStatus(HttpStatus.OK)
+    public List<List<Member>> getGroups() {
+        return memberService.getGroups();
     }
 }

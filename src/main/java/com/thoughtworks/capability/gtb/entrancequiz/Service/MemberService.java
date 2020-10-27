@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class MemberService {
 
-
+    private final int GROUP_NUM = 6;
     private List<Member> memberList=createMemberList();
-
+    private List<List<Member>> groups = new ArrayList<>(GROUP_NUM);
 
     public List<Member> getMembers() {
         return memberList;
@@ -29,5 +29,10 @@ public class MemberService {
         Arrays.stream(names).forEach(name->newList.add(Member.builder().name(name).id(newList.size()+1).build()));
         return newList;
     }
+
+    public List<List<Member>> getGroups() {
+        return groups;
+    }
+
 
 }
