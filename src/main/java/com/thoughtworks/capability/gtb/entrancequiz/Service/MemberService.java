@@ -27,6 +27,7 @@ public class MemberService {
         String[] names = {"成吉思汗", "鲁班七号", "太乙真人", "钟无艳", "花木兰", "雅典娜", "芈月",
                 "白起", "刘禅", "庄周", "马超", "刘备", "哪吒", "大乔", "蔡文姬"};
         ArrayList<Member> newList = new ArrayList<>();
+        // TODO GTB-知识点: + 使用了stream操作
         Arrays.stream(names).forEach(name->newList.add(Member.builder().name(name).id(newList.size()+1).build()));
         return newList;
     }

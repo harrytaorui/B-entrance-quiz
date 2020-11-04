@@ -13,6 +13,7 @@ public class CorsConfig {
             "localhost:8080",
     };
 
+    // TODO GTB-知识点: + 使用了CorsFilter
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
